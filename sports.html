@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的运动世界</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+    }
+    nav {
+      background-color: #333;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+    h1 {
+      text-align: center;
+      color: rgb(69, 179, 215);
+      margin-top: 20px;
+    }
+    p {
+      color: rgb(144, 221, 177);
+      margin: 30px;
+      font-size: 20px;
+    }
+
+    a {
+      font-size: 18px;
+      color: bisque;
+    }
+    img {
+      display: block;
+      margin: 20px auto;
+    }
+.theme-light {
+      background: linear-gradient(135deg, #f4f4f4, #e5e5e5);
+    }
+
+.theme-dark {
+      background: linear-gradient(135deg, #333, #555);
+    }
+    #music-toggle {
+      position: absolute;
+      top: 50px;
+      right: 10px;
+      background-color: #ccc;
+      color: black;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="index.html" onclick="goHome()">返回主页</a>
+    <a href="games.html" onclick="goGames()">我喜欢的游戏</a>
+    <a href="sports.html" onclick="goSports()">我喜欢的运动</a>
+    <a href="hobby.html" onclick="goHobby()">我的爱好</a>
+    <a href="emali.html" onclick="goEmail()">向我发 email</a>
+    <a href="music.html" onclick="goMusic()">我推荐的音乐</a>
+    <button onclick="toggleTheme('theme-light')">浅色主题</button>
+    <button onclick="toggleTheme('theme-dark')">深色主题</button>
+    <button id="music-toggle" onclick="toggleMusic()">开启背景音乐</button>
+  </nav>
+
+  <h1>你好，欢迎来到我的运动世界</h1>
+  <br><br><br><br>
+  <p>篮球，点击右方链接可以看 nba 的赛事安排：<a href="https://cn.bing.com/sportsdetails?q=nba%E5%9B%BE%E7%89%87&sport=Basketball&scenario=League&TimezoneId=China%20Standard%20Time&league=Basketball_NBA&intent=Generic&seasonyear=2024&segment=sports&isl2=true&">NBA</a></p>
+  <div>
+    <img src="photos/nba.png" alt="篮球" width="800px" class="zoomable-image">
+  </div>
+  <br><br>
+  <div>
+    <p style="color: aquamarine; font-size: 20px;">我喜欢的运动当然也少不了乒乓球</p>
+    <a href="https://www.ctta.cn/" style="color: bisque;">乒协官网，喜欢的也可以去看一下，欣赏运动健儿的风采</a>
+    <br><br>
+    <div>
+      <img src="photos/longdui.png" style="width: 800px" class="zoomable-image"><br><br><br><br><br><br><br><br><br>龙队真的帅啊
+      </img>
+    </div>
+    <audio id="background-music" loop>
+      <source src="shaonian.m4a" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <script>
+    function goHome() {
+      window.location.href = "index.html";
+    }
+    function toggleTheme(themeClass) {
+      var body = document.body;
+      body.classList.remove('theme-light', 'theme-dark');
+      body.classList.add(themeClass);
+    }
+    function toggleMusic() {
+      var music = document.getElementById('background-music');
+      if (music.paused) {
+        music.play();
+        document.getElementById('music-toggle').innerHTML = '关闭背景音乐';
+      } else {
+        music.pause();
+        document.getElementById('music-toggle').innerHTML = '开启背景音乐';
+      }
+    }
+
+    const images = document.querySelectorAll('.zoomable-image');
+    images.forEach(image => {
+      image.addEventListener('click', function () {
+        const overlay = document.createElement('div');
+        overlay.style.position = 'fixed';
+        overlay.style.top = 0;
+        overlay.style.left = 0;
+        overlay.style.width = '100%';
+        overlay.style.height = '100%';
+        overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+        overlay.style.display = 'flex';
+        overlay.style.justifyContent = 'center';
+        overlay.style.alignItems = 'center';
+        overlay.style.zIndex = 9999;
+        document.body.appendChild(overlay);
+
+        const enlargedImage = document.createElement('img');
+        enlargedImage.src = this.src;
+        enlargedImage.style.maxWidth = '90%';
+        enlargedImage.style.maxHeight = '90%';
+        enlargedImage.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)';
+
+        enlargedImage.addEventListener('click', function () {
+          overlay.remove();
+        });
+
+        overlay.appendChild(enlargedImage);
+      });
+    });
+
+    window.onload = function () {
+      var music = document.getElementById('background-music');
+      music.play();
+    };
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" width="device-width" initial-scale="1">
+  <title>你好，我是史梓洋</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #d5f0f0;
+      transition: background-color 0.5s ease;
+    }
+
+    nav {
+      background-color: #333;
+      color: white;
+      padding: 10px;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+   .theme-toggle {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #555;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+   .theme-light {
+      background-color: #d5f0f0;
+    }
+
+   .theme-dark {
+      background-color: #333;
+      color: white;
+    }
+
+   .content {
+      margin: 30px;
+      text-align: center;
+    }
+
+   .content h1 {
+      color: #991188;
+      background-color: #f0ffff;
+      margin: 0;
+      padding: 20px;
+    }
+
+   .content img {
+      width: 900px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+   .content a {
+      display: block;
+      margin-top: 10px;
+      color: black;
+      font-size: 20px;
+    }
+
+    #music-toggle {
+      position: absolute;
+      top: 50px;
+      right: 10px;
+      background-color: #ccc;
+      color: black;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body class="theme-light">
+  <nav>
+    <a href="#">首页</a>
+    <a href="games.html">我喜欢的游戏</a>
+    <a href="sports.html">我喜欢的运动</a>
+    <a href="hobby.html">我的爱好</a>
+    <a href="emali.html">向我发 email</a>
+    <a href="music.html">我推荐的音乐</a>
+  </nav>
+
+  <button class="theme-toggle" onclick="toggleTheme()">切换主题</button>
+  <button id="music-toggle" onclick="toggleMusic()">开启背景音乐</button>
+
+  <div class="content">
+    <h1>你好，我是史梓洋,欢迎来到我的网页</h1>
+    <img src="photos/introduction.png" alt="我的自我介绍" class="zoomable-image">
+    <p>这是我的一张自我介绍的 ppt</p>
+  </div>
+
+  <audio id="background-music" loop>
+    <source src="shaonian.m4a" type="audio/mpeg">
+  </audio>
+
+  <script>
+    function toggleTheme() {
+      var body = document.body;
+      if (body.classList.contains('theme-light')) {
+        body.classList.remove('theme-light');
+        body.classList.add('theme-dark');
+      } else {
+        body.classList.remove('theme-dark');
+        body.classList.add('theme-light');
+      }
+    }
+
+
+    function toggleMusic() {
+      var music = document.getElementById('background-music');
+      if (music.paused) {
+        music.play();
+        document.getElementById('music-toggle').innerHTML = '关闭背景音乐';
+      } else {
+        music.pause();
+        document.getElementById('music-toggle').innerHTML = '开启背景音乐';
+      }
+    }
+
+    const images = document.querySelectorAll('.zoomable-image');
+    images.forEach(image => {
+      image.addEventListener('click', function () {
+        const overlay = document.createElement('div');
+        overlay.style.position = 'fixed';
+        overlay.style.top = 0;
+        overlay.style.left = 0;
+        overlay.style.width = '100%';
+        overlay.style.height = '100%';
+        overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+        overlay.style.display = 'flex';
+        overlay.style.justifyContent = 'center';
+        overlay.style.alignItems = 'center';
+        overlay.style.zIndex = 9999;
+        document.body.appendChild(overlay);
+
+        const enlargedImage = document.createElement('img');
+        enlargedImage.src = this.src;
+        enlargedImage.style.maxWidth = '90%';
+        enlargedImage.style.maxHeight = '90%';
+        enlargedImage.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)';
+
+        enlargedImage.addEventListener('click', function () {
+          overlay.remove();
+        });
+
+        overlay.appendChild(enlargedImage);
+      });
+    });
+
+    window.onload = function () {
+      var music = document.getElementById('background-music');
+      music.play();
+    };
+  </script>
+</body>
+
+</html>

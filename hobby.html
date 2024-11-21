@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的兴趣爱好</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.5s ease;
+            color: #333;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        nav {
+            background-color: #444;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        section {
+            width: 300px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            margin: 20px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #007BFF;
+        }
+
+      .hobby-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        /* 主题颜色类 */
+      .theme-light {
+            background-color: #f4f4f4;
+        }
+
+      .theme-dark {
+            background-color: #222;
+            color: #ddd;
+        }
+
+      .theme-pastel {
+            background-color: #ffe5e5;
+        }
+
+      .theme-cool {
+            background-color: #e5f4ff;
+        }
+    </style>
+</head>
+
+<body class="theme-light">
+    <nav>
+        <a href="index.html" onclick="goHome()">返回首页</a>
+        <a href="games.html" onclick="goGames()">我喜欢的游戏</a>
+        <a href="sports.html" onclick="goSports()">我喜欢的运动</a>
+        <a href="hobby.html" onclick="goHobby()">我的爱好</a>
+        <a href="emali.html" onclick="goEmail()">向我发 email</a>
+        <a href="music.html" onclick="goMusic()">我推荐的音乐</a>
+        <button onclick="toggleTheme('theme-light')">浅色主题</button>
+        <button onclick="toggleTheme('theme-dark')">深色主题</button>
+        <button onclick="toggleTheme('theme-pastel')">粉色主题</button>
+        <button onclick="toggleTheme('theme-cool')">蓝色主题</button>
+        <button id="music-toggle" onclick="toggleMusic()">开启背景音乐</button>
+    </nav>
+    <header>
+        <h1>我的兴趣世界</h1>
+    </header>
+    <main>
+        <section id="reading">
+            <h2>阅读</h2>
+            <p>我热爱阅读各类书籍，从经典文学到现代科幻，每一本书都是一个全新的世界。</p>
+            <img src="photos/shiri.png" alt="Reading" class="hobby-image zoomable-image">
+            <a href="https://www.bilibili.com/video/BV1ZQ4y1M71X?spm_id_from=333.788.recommend_more_video.-1&vd_source=fa71d5bb8dbe74bfe8d4f109d3c47d25">十日终焉</a>
+        </section>
+        <section id="traveling">
+            <h2>旅行</h2>
+            <p>旅行让我领略不同的风土人情，探索未知的美景，每一次旅程都是一次难忘的经历。</p>
+            <img src="photos/laoshan.jpg" alt="Traveling" class="hobby-image zoomable-image">
+            <p>这是高考完去青岛爬崂山时拍的照片，好看✌</p>
+        </section>
+        <section id="painting">
+            <h2>柯南</h2>
+            <p>在有空的时候，会去看一看柯南，聆听智慧的声音哈哈哈</p>
+            <img src="photos/kenan.png" alt="Painting" class="hobby-image zoomable-image">
+            <a href="https://search.bilibili.com/all?keyword=%E6%9F%AF%E5%8D%97&from_source=webtop_search&spm_id_from=333.1007&search_source=2">柯南</a>
+        </section>
+    </main>
+    <footer>
+        <p>&copy;>if you also enjoys them,please tell me.We can share with others(嘿嘿)</p>
+    </footer>
+    <script>
+        function goHome() {
+  
+            window.location.href = "index.html";
+        }
+
+        function toggleTheme(themeClass) {
+            var body = document.body;
+   
+            body.classList.remove('theme-light', 'theme-dark', 'theme-pastel', 'theme-cool');
+            body.classList.add(themeClass);
+        }
+        function toggleMusic() {
+      var music = document.getElementById('background-music');
+      if (music.paused) {
+        music.play();
+        document.getElementById('music-toggle').innerHTML = '关闭背景音乐';
+      } else {
+        music.pause();
+        document.getElementById('music-toggle').innerHTML = '开启背景音乐';
+      }
+    }
+
+    const images = document.querySelectorAll('.zoomable-image');
+    images.forEach(image => {
+      image.addEventListener('click', function () {
+        const overlay = document.createElement('div');
+        overlay.style.position = 'fixed';
+        overlay.style.top = 0;
+        overlay.style.left = 0;
+        overlay.style.width = '100%';
+        overlay.style.height = '100%';
+        overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+        overlay.style.display = 'flex';
+        overlay.style.justifyContent = 'center';
+        overlay.style.alignItems = 'center';
+        overlay.style.zIndex = 9999;
+        document.body.appendChild(overlay);
+
+        const enlargedImage = document.createElement('img');
+        enlargedImage.src = this.src;
+        enlargedImage.style.maxWidth = '90%';
+        enlargedImage.style.maxHeight = '90%';
+        enlargedImage.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)';
+
+        enlargedImage.addEventListener('click', function () {
+          overlay.remove();
+        });
+
+        overlay.appendChild(enlargedImage);
+      });
+    });
+
+    window.onload = function () {
+      var music = document.getElementById('background-music');
+      music.play();
+    };
+    </script>
+</body>
+
+</html>

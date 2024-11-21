@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+    body {
+      background-color: #2b2a2a;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+
+    nav {
+      background-color: #333;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+  .theme-toggle {
+      background-color: #555;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 30px;
+    }
+    img {
+      display: block;
+      margin: 20px auto;
+    }
+
+    a {
+      color: aqua;
+    }
+
+  .theme-light {
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+  .theme-dark {
+      background-color: #2b2a2a;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body class="theme-dark">
+  <nav>
+    <a href="index.html" onclick="goHome()">返回首页</a>
+    <a href="games.html" onclick="goGames()">我喜欢的游戏</a>
+    <a href="sports.html" onclick="goSports()">我喜欢的运动</a>
+    <a href="hobby.html" onclick="goHobby()">我的爱好</a>
+    <a href="emali.html" onclick="goEmail()">向我发 email</a>
+    <a href="music.html" onclick="goMusic()">我推荐的音乐</a>
+  </nav>
+    <button class="theme-toggle" onclick="toggleTheme()">切换主题</button>
+    <button id="music-toggle" onclick="toggleMusic()">开启背景音乐</button>
+  </nav>
+
+  <div>
+    <h1 style="color: aquamarine;">你好，欢迎来到我的游戏世界</h1>
+    <br><br><br><br>
+    <h2 style="color: aqua;">黑神话悟空:大圣重返西游&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;欢迎来到王者荣耀</h2>
+    <img src="photos/heishenhua.png" alt="黑神话悟空" width="600" class="zoomable-image">
+    <img src="photos/wzry.png" alt="王者荣耀" width="700" class="zoomable-image">
+    <br>
+    <div style="color: aqua; font-size: 20px;">
+      <h3>且看大圣&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="https://www.bilibili.com/video/BV1ijn9eWE2k/?spm_id_from=333.337.search-card.all.click" >点击观看大圣的战斗</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;柯南与王者的联名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="https://www.bilibili.com/video/BV1jKmXYiE7M/?spm_id_from=333.337.search-card.all.click">点击欣赏</a>
+      </h3>
+    </div>
+  </div>
+
+  <script>
+    function goHome() {
+      window.location.href = "index.html";
+    }
+    function toggleTheme() {
+      var body = document.body;
+      if (body.classList.contains('theme-light')) {
+        body.classList.remove('theme-light');
+        body.classList.add('theme-dark');
+      } else {
+        body.classList.remove('theme-dark');
+        body.classList.add('theme-light');
+      }
+    }
+    function toggleMusic() {
+      var music = document.getElementById('background-music');
+      if (music.paused) {
+        music.play();
+        document.getElementById('music-toggle').innerHTML = '关闭背景音乐';
+      } else {
+        music.pause();
+        document.getElementById('music-toggle').innerHTML = '开启背景音乐';
+      }
+    }
+
+    const images = document.querySelectorAll('.zoomable-image');
+    images.forEach(image => {
+      image.addEventListener('click', function () {
+        const overlay = document.createElement('div');
+        overlay.style.position = 'fixed';
+        overlay.style.top = 0;
+        overlay.style.left = 0;
+        overlay.style.width = '100%';
+        overlay.style.height = '100%';
+        overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+        overlay.style.display = 'flex';
+        overlay.style.justifyContent = 'center';
+        overlay.style.alignItems = 'center';
+        overlay.style.zIndex = 9999;
+        document.body.appendChild(overlay);
+
+        const enlargedImage = document.createElement('img');
+        enlargedImage.src = this.src;
+        enlargedImage.style.maxWidth = '90%';
+        enlargedImage.style.maxHeight = '90%';
+        enlargedImage.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)';
+
+        enlargedImage.addEventListener('click', function () {
+          overlay.remove();
+        });
+
+        overlay.appendChild(enlargedImage);
+      });
+    });
+
+    window.onload = function () {
+      var music = document.getElementById('background-music');
+      music.play();
+    };
+  </script>
+</body>
+
+</html>
