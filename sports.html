@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的运动世界</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f0f8ff;
+      color: #333;
+      font-family: Arial, sans-serif;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+
+    header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 30px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #3ad0e0, #004080);
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+      padding: 10px 20px;
+      width: 100%;
+      margin-bottom: 30px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      position: relative;
+      padding: 0 20px;
+      transition: color 0.3s ease, background-color 0.3s ease;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background-color: #fff;
+      bottom: -5px;
+      left: 0;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #00ffff;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .theme-toggle,
+    #music-toggle {
+      background-color: #333;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      margin-left: 20px;
+    }
+
+    .theme-toggle:hover,
+    #music-toggle:hover {
+      background-color: #00ffff;
+      color: #000;
+      transform: scale(1.1);
+    }
+
+    main {
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 40px;
+      padding: 20px 0;
+      color: #004080;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 30px;
+      padding: 15px 0;
+      color: #3ad0e0;
+    }
+
+    h3 {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 24px;
+      color: #004080;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      text-align: justify;
+      margin: 20px 0;
+    }
+
+    .image-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .image-container img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    a {
+      color: #3ad0e0;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: #00ffff;
+    }
+
+    .theme-light {
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    .theme-dark {
+      background-color: #2b2a2a;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body class="theme-dark">
+  <header>
+    <nav>
+      <a href="index.html">返回首页</a>
+      <a href="games.html">我喜欢的游戏</a>
+      <a href="sports.html">我喜欢的运动</a>
+      <a href="hobby.html">我的爱好</a>
+      <a href="emali.html">向我发 email</a>
+      <a href="music.html">我推荐的音乐</a>
+      <button class="theme-toggle" onclick="toggleTheme()">切换主题</button>
+      <button id="music-toggle" onclick="toggleMusic()">开启背景音乐</button>
+    </nav>
+  </header>
+
+  <main>
+    <h1>你好，欢迎来到我的运动世界</h1>
+
+    <h2>篮球与乒乓球的魅力</h2>
+
+    <p>运动是生活的一部分，不仅能增强体质，还能带来无穷的乐趣。篮球和乒乓球作为两项非常受欢迎的运动，给世界带来了大量的激情与活力。</p>
+
+    <h3>篮球：激情四溢的团队运动</h3>
+    <p>篮球是一项充满活力的团队运动，通过快速的攻防转换、精准的投篮和默契的配合，球员们在场上展现出卓越的技巧和极高的运动素质。无论是NBA赛事的高水平比赛，还是街头篮球的休闲娱乐，篮球都能让人感受到无与伦比的激情。</p>
+    <div class="image-container">
+      <div>
+        <p>NBA赛事安排：<a href="https://cn.bing.com/sportsdetails?q=nba%E5%9B%BE%E7%89%87&sport=Basketball">点击查看</a></p>
+        <img src="photos/nba.png" alt="篮球" class="zoomable-image">
+      </div>
+    </div>
+
+    <h3>乒乓球：智慧与技巧的较量</h3>
+    <p>乒乓球作为一项需要高度集中注意力和灵活反应的运动，不仅考验球员的技术和耐力，还需要巧妙的战术。乒乓球比赛中，球员们通过快速的击球、精准的角度以及变化多端的旋转来挑战对手，给观众带来极大的视觉享受。</p>
+    <div class="image-container">
+      <div>
+        <p>乒乓球赛事：<a href="https://www.ctta.cn/">点击查看</a></p>
+        <img src="photos/longdui.png" alt="乒乓球" class="zoomable-image">
+      </div>
+    </div>
+
+    <h3>为何我喜欢这些运动？</h3>
+    <p>篮球与乒乓球是我最喜欢的两项运动，它们不仅让我保持身体健康，还让我享受竞技和团队合作的乐趣。篮球让我感受到速度和力量的结合，而乒乓球则让我体验到细腻与精准的挑战。这两项运动让我在压力中找到了释放，也让我与朋友们建立了深厚的友谊。</p>
+  </main>
+
+  <audio id="background-music" loop>
+    <source src="shaonian.m4a" type="audio/mpeg">
+  </audio>
+
+  <script>
+    function toggleTheme() {
+      var body = document.body;
+      body.classList.toggle('theme-dark');
+      body.classList.toggle('theme-light');
+    }
+
+    const images = document.querySelectorAll('.zoomable-image');
+    images.forEach(image => {
+      image.addEventListener('click', function () {
+        const overlay = document.createElement('div');
+        overlay.style.position = 'fixed';
+        overlay.style.top = 0;
+        overlay.style.left = 0;
+        overlay.style.width = '100%';
+        overlay.style.height = '100%';
+        overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+        overlay.style.display = 'flex';
+        overlay.style.justifyContent = 'center';
+        overlay.style.alignItems = 'center';
+        overlay.style.zIndex = 9999;
+        document.body.appendChild(overlay);
+
+        const enlargedImage = document.createElement('img');
+        enlargedImage.src = this.src;
+        enlargedImage.style.width = '80vw';
+        enlargedImage.style.height = '80vh';
+        enlargedImage.style.objectFit = 'contain';
+
+        enlargedImage.addEventListener('click', function () {
+          overlay.remove();
+        });
+
+        overlay.appendChild(enlargedImage);
+      });
+    });
+
+    function toggleMusic() {
+      var music = document.getElementById('background-music');
+      var musicToggle = document.getElementById('music-toggle');
+      if (music.paused) {
+        music.play();
+        musicToggle.textContent = '关闭背景音乐';
+      } else {
+        music.pause();
+        musicToggle.textContent = '开启背景音乐';
+      }
+    }
+
+    window.onload = function () {
+      var music = document.getElementById('background-music');
+      music.play();
+    };
+  </script>
+</body>
+
+</html>

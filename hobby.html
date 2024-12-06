@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的兴趣爱好</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.5s ease;
+            color: #333;
+        }
+
+        nav {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+      padding: 10px 20px;
+      width: 100%;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      position: relative;
+      padding: 0 15px;
+      transition: color 0.3s ease, background-color 0.3s ease;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background-color: #fff;
+      bottom: -5px;
+      left: 0;
+      transition: width 0.5s ease;
+    }
+
+    nav a:hover {
+      color: #3ad0e0;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+        .theme-toggle,
+        #music-toggle {
+            position: fixed;
+            top: 15px;
+            right: 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        #music-toggle {
+            top: 60px;
+        }
+
+        .theme-toggle:hover,
+        #music-toggle:hover {
+            background-color: #3ad0e0;
+            color: #000;
+            transform: scale(1.1);
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        section {
+            width: 300px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            margin: 20px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #007BFF;
+        }
+
+        .hobby-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .theme-dark {
+            background-color: #121212;
+            color: #eee;
+        }
+
+        .theme-dark nav {
+            background-color: #1f1f1f;
+        }
+
+        .theme-dark nav a {
+            color: #bbb;
+        }
+
+        .theme-dark nav a:hover {
+            background-color: #333;
+            color: white;
+        }
+
+        .theme-dark footer {
+            background-color: #1f1f1f;
+        }
+
+        .theme-pastel {
+            background-color: #ffe5e5;
+        }
+
+        .theme-cool {
+            background-color: #e5f4ff;
+        }
+    </style>
+</head>
+
+<body class="theme-light">
+    <nav>
+        <a href="index.html">返回首页</a>
+        <a href="games.html">我喜欢的游戏</a>
+        <a href="sports.html">我喜欢的运动</a>
+        <a href="hobby.html">我的爱好</a>
+        <a href="emali.html">向我发 email</a>
+        <a href="music.html">我推荐的音乐</a>
+        <button onclick="toggleTheme('theme-light')">浅色主题</button>
+        <button onclick="toggleTheme('theme-dark')">深色主题</button>
+        <button onclick="toggleTheme('theme-pastel')">粉色主题</button>
+        <button onclick="toggleTheme('theme-cool')">蓝色主题</button>
+        <button id="music-toggle" onclick="toggleMusic()">开启背景音乐</button>
+    </nav>
+    
+    <audio id="background-music" loop>
+        <source src="shaonian.m4a" type="audio/mpeg">
+        您的浏览器不支持音频播放
+    </audio>
+    
+    <header>
+        <h1>我的兴趣世界</h1>
+    </header>
+    
+    <main>
+        <section id="reading">
+            <h2>阅读</h2>
+            <p>我热爱阅读各类书籍，从经典文学到现代科幻，每一本书都是一个全新的世界。</p>
+            <img src="photos/shiri.png" alt="Reading" class="hobby-image zoomable-image">
+            <br>
+            <a href="https://www.bilibili.com/video/BV1ZQ4y1M71X?spm_id_from=333.788.recommend_more_video.-1&vd_source=fa71d5bb8dbe74bfe8d4f109d3c47d25">十日终焉</a>
+        </section>
+        
+        <section id="traveling">
+            <h2>旅行</h2>
+            <p>旅行让我领略不同的风土人情，探索未知的美景，每一次旅程都是一次难忘的经历。</p>
+            <img src="photos/laoshan.jpg" alt="Traveling" class="hobby-image zoomable-image">
+            <p>这是高考完去青岛爬崂山时拍的照片，好看✌</p>
+        </section>
+        
+        <section id="painting">
+            <h2>柯南</h2>
+            <p>在有空的时候，会去看一看柯南，聆听智慧的声音哈哈哈</p>
+            <img src="photos/kenan.png" alt="Painting" class="hobby-image zoomable-image">
+            <a href="https://search.bilibili.com/all?keyword=%E6%9F%AF%E5%8D%97&from_source=webtop_search&spm_id_from=333.1007&search_source=2">柯南</a>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; if you also enjoy them, please tell me. We can share with others (嘿嘿)</p>
+    </footer>
+
+    <script>
+        function toggleTheme(themeClass) {
+            var body = document.body;
+            body.classList.remove('theme-light', 'theme-dark', 'theme-pastel', 'theme-cool');
+            body.classList.add(themeClass);
+        }
+
+        function toggleMusic() {
+            var music = document.getElementById('background-music');
+            var musicToggle = document.getElementById('music-toggle');
+            if (music.paused) {
+                music.play();
+                musicToggle.textContent = '关闭背景音乐';
+            } else {
+                music.pause();
+                musicToggle.textContent = '开启背景音乐';
+            }
+        }
+
+        const images = document.querySelectorAll('.zoomable-image');
+        images.forEach(image => {
+            image.addEventListener('click', function () {
+                const overlay = document.createElement('div');
+                overlay.style.position = 'fixed';
+                overlay.style.top = 0;
+                overlay.style.left = 0;
+                overlay.style.width = '100%';
+                overlay.style.height = '100%';
+                overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+                overlay.style.display = 'flex';
+                overlay.style.justifyContent = 'center';
+                overlay.style.alignItems = 'center';
+                overlay.style.zIndex = 9999;
+                document.body.appendChild(overlay);
+
+                const enlargedImage = document.createElement('img');
+                enlargedImage.src = this.src;
+                enlargedImage.style.maxWidth = '90%';
+                enlargedImage.style.maxHeight = '90%';
+                enlargedImage.style.borderRadius = '10px';
+                enlargedImage.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)';
+
+                enlargedImage.addEventListener('click', function () {
+                    overlay.remove();
+                });
+
+                overlay.appendChild(enlargedImage);
+            });
+        });
+
+        window.onload = function () {
+            var music = document.getElementById('background-music');
+            music.play();
+        };
+    </script>
+</body>
+</html>

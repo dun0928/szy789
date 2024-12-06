@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>你好，我是史梓洋</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f8ff;
+      color: #333;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+
+    nav {
+      background-color: #004080;
+      color: white;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      margin: 0 15px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: #3ad0e0;
+      color: #000;
+    }
+
+    .theme-toggle,
+    #music-toggle {
+      position: fixed;
+      top: 15px;
+      right: 20px;
+      background-color: #333;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    #music-toggle {
+      top: 60px;
+    }
+
+    .theme-toggle:hover,
+    #music-toggle:hover {
+      background-color: #3ad0e0;
+      color: #000;
+      transform: scale(1.1);
+    }
+
+    .content {
+      max-width: 800px;
+      margin: 50px auto;
+      text-align: center;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .content h1 {
+      font-size: 28px;
+      color: #004080;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .content img {
+      width: 100%;
+      max-width: 700px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .content img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .content p {
+      font-size: 16px;
+      color: #555;
+      margin-top: 10px;
+    }
+
+    .theme-dark {
+      background-color: #121212;
+      color: #eee;
+    }
+
+    .theme-dark nav {
+      background-color: #1f1f1f;
+    }
+
+    .theme-dark nav a {
+      color: #bbb;
+    }
+
+    .theme-dark nav a:hover {
+      background-color: #333;
+      color: white;
+    }
+
+    .theme-dark .content {
+      background-color: #1f1f1f;
+      color: #eee;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+  </style>
+</head>
+
+<body class="theme-light">
+  <nav>
+    <a href="https://dun0928.github.io/roompage/">寝室主页</a>
+    <a href="index.html">我的首页</a>
+    <a href="games.html">我喜欢的游戏</a>
+    <a href="sports.html">我喜欢的运动</a>
+    <a href="hobby.html">我的爱好</a>
+    <a href="emali.html">向我发 email</a>
+    <a href="music.html">我推荐的音乐</a>
+  </nav>
+
+  <button class="theme-toggle" onclick="toggleTheme()">切换主题</button>
+  <button id="music-toggle" onclick="toggleMusic()">开启背景音乐</button>
+
+  <div class="content">
+    <h1>你好，我是史梓洋，欢迎来到我的网页</h1>
+    <img src="photos/introduction.png" alt="我的自我介绍" class="zoomable-image">
+    <p>这是我的一张自我介绍的 PPT</p>
+  </div>
+
+  <audio id="background-music" loop>
+    <source src="shaonian.m4a" type="audio/mpeg">
+  </audio>
+
+  <script>
+    function toggleTheme() {
+      var body = document.body;
+      body.classList.toggle('theme-dark');
+    }
+
+    function toggleMusic() {
+      var music = document.getElementById('background-music');
+      var musicToggle = document.getElementById('music-toggle');
+      if (music.paused) {
+        music.play();
+        musicToggle.textContent = '关闭背景音乐';
+      } else {
+        music.pause();
+        musicToggle.textContent = '开启背景音乐';
+      }
+    }
+
+    document.querySelectorAll('.zoomable-image').forEach(image => {
+      image.addEventListener('click', function () {
+        const overlay = document.createElement('div');
+        overlay.style.position = 'fixed';
+        overlay.style.top = 0;
+        overlay.style.left = 0;
+        overlay.style.width = '100%';
+        overlay.style.height = '100%';
+        overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+        overlay.style.display = 'flex';
+        overlay.style.justifyContent = 'center';
+        overlay.style.alignItems = 'center';
+        overlay.style.zIndex = 9999;
+        document.body.appendChild(overlay);
+
+        const enlargedImage = document.createElement('img');
+        enlargedImage.src = this.src;
+        enlargedImage.style.maxWidth = '90%';
+        enlargedImage.style.maxHeight = '90%';
+        enlargedImage.style.borderRadius = '10px';
+        enlargedImage.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)';
+
+        enlargedImage.addEventListener('click', function () {
+          overlay.remove();
+        });
+
+        overlay.appendChild(enlargedImage);
+      });
+    });
+
+    window.onload = function () {
+      var music = document.getElementById('background-music');
+      music.play();
+    };
+  </script>
+</body>
+
+</html>

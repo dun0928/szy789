@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+
+    nav {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 18px;
+      position: relative;
+      padding: 0 10px;
+      transition: color 0.3s ease, background-color 0.3s ease;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background-color: #fff;
+      bottom: -5px;
+      left: 0;
+      transition: width 0.5s ease;
+    }
+
+    nav a:hover {
+      color: #3ad0e0;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .theme-toggle,
+    #music-toggle {
+      background-color: #333;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .theme-toggle:hover,
+    #music-toggle:hover {
+      background-color: #3ad0e0;
+      color: #000;
+      transform: scale(1.1);
+    }
+
+    main {
+      padding: 30px;
+      max-width: 1000px;
+      margin: 30px auto;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      text-align: center;
+      color: #004080;
+      font-size: 28px;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #3ad0e0;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .intro-text {
+      text-align: center;
+      font-size: 18px;
+      color: #333;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .image-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    img {
+      display: block;
+      max-width: 80%;
+      border-radius: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    a {
+      display: inline-block;
+      text-align: center;
+      font-size: 18px;
+      color: aqua;
+      margin-top: 20px;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: #00ffff;
+    }
+
+    .theme-light {
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    .theme-dark {
+      background-color: #2b2a2a;
+      color: #fff;
+    }
+
+    #music-toggle {
+      position: fixed;
+      top: 50px;
+      right: 20px;
+      background-color: #333;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    #music-toggle:hover {
+      background-color: #00ffff;
+      transform: scale(1.1);
+    }
+
+  </style>
+</head>
+
+<body class="theme-dark">
+  <nav>
+    <a href="index.html" onclick="goHome()">返回首页</a>
+    <a href="games.html" onclick="goGames()">我喜欢的游戏</a>
+    <a href="sports.html" onclick="goSports()">我喜欢的运动</a>
+    <a href="hobby.html" onclick="goHobby()">我的爱好</a>
+    <a href="emali.html" onclick="goEmail()">向我发 email</a>
+    <button class="theme-toggle" onclick="toggleTheme('theme-light')">浅色主题</button>
+    <button class="theme-toggle" onclick="toggleTheme('theme-dark')">深色主题</button>
+    <button id="music-toggle" onclick="toggleMusic()">开启背景音乐</button>
+  </nav>
+
+  <main>
+    <h1>最后为大家推荐一首最近我在听的一首音乐吧</h1>
+    <h2>水手</h2>
+
+    <div class="intro-text">
+      <p>音乐是我生活的一部分，我喜欢通过音乐放松自己，也喜欢通过旋律表达情感。这首《水手》特别吸引我，因为它融合了深沉的旋律与温暖的歌词，仿佛带我回到了那个怀旧的时代。每次听这首歌，我都能感受到其中传递的情感和故事，仿佛与歌曲中的主人公一同走过岁月的长河。</p>
+      <p>这首歌不仅是对过往时光的回忆，也是对未来的憧憬。它让我感受到希望、力量与坚持。每一个音符都是对自由和梦想的向往，带给我无尽的感动。</p>
+    </div>
+
+    <div class="image-container">
+      <img src="photos/shuishou.png" alt="水手" class="zoomable-image">
+    </div>
+
+    <a href="https://www.bilibili.com/video/BV1vb4y1b7RU/?vd_source=fa71d5bb8dbe74bfe8d4f109d3c47d25" style="font-size: 30px;color:#004080">点击欣赏水手音乐</a>
+  </main>
+
+  <audio id="background-music" loop>
+    <source src="shaonian.m4a" type="audio/mpeg">
+  </audio>
+
+  <script>
+    function goHome() {
+      window.location.href = "index.html";
+    }
+
+    function toggleMusic() {
+      var music = document.getElementById('background-music');
+      if (music.paused) {
+        music.play();
+        document.getElementById('music-toggle').innerHTML = '关闭背景音乐';
+      } else {
+        music.pause();
+        document.getElementById('music-toggle').innerHTML = '开启背景音乐';
+      }
+    }
+
+    function toggleTheme(themeClass) {
+      var body = document.body;
+      body.classList.remove('theme-light', 'theme-dark');
+      body.classList.add(themeClass);
+    }
+
+    const images = document.querySelectorAll('.zoomable-image');
+    images.forEach(image => {
+      image.addEventListener('click', function () {
+        const overlay = document.createElement('div');
+        overlay.style.position = 'fixed';
+        overlay.style.top = 0;
+        overlay.style.left = 0;
+        overlay.style.width = '100%';
+        overlay.style.height = '100%';
+        overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+        overlay.style.display = 'flex';
+        overlay.style.justifyContent = 'center';
+        overlay.style.alignItems = 'center';
+        overlay.style.zIndex = 9999;
+        document.body.appendChild(overlay);
+
+        const enlargedImage = document.createElement('img');
+        enlargedImage.src = this.src;
+        enlargedImage.style.maxWidth = '70%';
+        enlargedImage.style.maxHeight = '70%';
+        enlargedImage.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)';
+
+        enlargedImage.addEventListener('click', function () {
+          overlay.remove();
+        });
+
+        overlay.appendChild(enlargedImage);
+      });
+    });
+  </script>
+</body>
+
+</html>
