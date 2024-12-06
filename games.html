@@ -213,7 +213,7 @@
   <audio id="background-music" loop>
     <source src="shaonian.m4a" type="audio/mpeg">
   </audio>
-
+  <!-- <script src="MusicController.js"></script> -->
   <script>
     function toggleTheme() {
       var body = document.body;
@@ -251,22 +251,22 @@
       });
     });
 
-    function toggleMusic() {
-      var music = document.getElementById('background-music');
-      var musicToggle = document.getElementById('music-toggle');
-      if (music.paused) {
-        music.play();
-        musicToggle.textContent = '关闭背景音乐';
-      } else {
-        music.pause();
-        musicToggle.textContent = '开启背景音乐';
-      }
-    }
+    // function toggleMusic() {
+    //   var music = document.getElementById('background-music');
+    //   var musicToggle = document.getElementById('music-toggle');
+    //   if (music.paused) {
+    //     music.play();
+    //     musicToggle.textContent = '关闭背景音乐';
+    //   } else {
+    //     music.pause();
+    //     musicToggle.textContent = '开启背景音乐';
+    //   }
+    // }
 
-    window.onload = function () {
-      var music = document.getElementById('background-music');
-      music.play();
-    };
+    // window.onload = function () {
+    //   var music = document.getElementById('background-music');
+    //   music.play();
+    // };
   </script>
 </body>
 
